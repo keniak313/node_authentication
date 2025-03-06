@@ -1,0 +1,19 @@
+<%-include('partials/head')-%>
+
+<body>
+  <%-include('partials/header') -%>
+  <main>
+    <h3>Sign up</h3>
+    <form action="" method="POST" style="display: flex; flex-direction: column;">
+        <label for="username">Username:</label>
+        <input name="username" id="username" type="text" required>
+        <label for="password">Password:</label>
+        <input name="password" id="password" type="password" required>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input name="confirmPassword" id="confirmPassword" type="password" required>
+        <button type="submit">Sign up!</button>
+    </form>
+    <%-include('partials/errors')-%>
+  </main>
+  <%-include('partials/footer') -%>
+</body>

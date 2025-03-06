@@ -1,0 +1,10 @@
+<div>
+  <% if (locals.currentUser){ %>
+  <p>User: <%=msg.username%></p>
+  <% } %>
+  <p><%=msg.message%></p>
+  <p>Date: <%=msg.date_added%></p>
+  <% if(locals.currentUser && locals.currentUser.is_admin){ %>
+    <a href="/remove/<%=msg.message_id%>"><button>Remove</button></a>
+  <% } %>
+</div>

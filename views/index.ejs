@@ -3,7 +3,30 @@
 <body>
   <%-include('partials/header') -%>
   <main>
-    <%-include(content)-%>
+    <% if(!locals.currentUser){ %>
+    <a href="/auth/login">Login</a>
+    <a href="/auth/signup">Signup</a>
+    <% }else{ %>
+    <p>Cos tu bedzie</p>
+    <% } %>
+    <br />
+    <hr />
+    <br />
+    <% if(locals.currentUser){ %>
+    <form action="/post-message" method="POST">
+      <label for="message">Message: </label>
+      <textarea name="message" id="message" required></textarea>
+      <button type="submit">Post</button>
+    </form>
+    <%- include('partials/errors') -%>
+    <% } %>
+    <hr />
+    <% if(messages){ %>
+    <% messages.map((msg) => { %>
+    <%- include('partials/message-card', {msg: msg}) -%>
+    <br />
+    <% }) %>
+    <% } %>
   </main>
   <%-include('partials/footer') -%>
 </body>

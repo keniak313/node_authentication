@@ -3,19 +3,21 @@ import "dotenv/config";
 import pg from "pg";
 const { Client } = pg;
 
-
 //REPLACE WITH NEEDED DEFAULT DB VALUES
 const SQL = `
-CREATE TABLE IF NOT EXISTS <TABLE_NAME> (
-    id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    <COLUMN_NAME> <DATA_TYPE> np. VARCHAR ( 255 ) lub DATA
+CREATE TABLE IF NOT EXISTS users(
+id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+username VARCHAR (255),
+password VARCHAR (255)
 );
 
-INSERT INTO <TABLE_NAME> (<COLUMN_NAME>, <COLUMN_NAME>)
-VALUES
-    ('Name1', 'Col2 val'),
-    ('Name2');
-`
+CREATE TABLE IF NOT EXISTS messages(
+id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+user_id INTEGER references users(id) ON DELETE CASCADE,
+message VARCHAR (255),
+date_added TIMESTAMP WITH TIME ZONE
+);
+`;
 
 async function main() {
   console.log("seeding...");

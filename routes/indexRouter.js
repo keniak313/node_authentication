@@ -1,9 +1,7 @@
 import { Router } from "express";
 
 export const indexRouter = Router();
-import { renderIndex } from "../controllers/indexController.js";
+import * as indexController from '../controllers/indexController.js'
 
-
-indexRouter.get("/", (req,res)=>{
-    renderIndex();
-})
+indexRouter.get("/", indexController.indexGet)
+indexRouter.post('/post-message', indexController.messagePost)

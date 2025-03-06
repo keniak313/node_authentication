@@ -1,0 +1,11 @@
+<% if(locals.errors) { %>
+<ul>
+  <% errors.forEach((error)=>{ %>
+  <% if(typeof error === "object"){ %>
+    <li><%= error.msg %></li>
+  <%} else{ %>
+    <li><%= error %></li>
+  <%}%>
+  <%})%>
+</ul>
+<%}%>
